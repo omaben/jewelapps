@@ -1,0 +1,71 @@
+<ion-content>
+  <ion-header [translucent]="true" class="header_top">
+    <ion-toolbar class="new-background-color">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-img [src]="logoApps" class="logo_menu"></ion-img>
+      
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content id="cart_items">
+    <div class="container min-height-container">
+      <div class="cart_info">
+              <form *ngIf="s>0">
+
+                <div class="info_top_cart">
+                  <h4 class="left">Toplam Gram :{{sGram}} Gr </h4>
+                  <h4 class="right">Toplam Has : {{sHas}} Gr </h4>
+                </div>
+                <ion-card *ngFor="let item of items; let i = index" [attr.data-index]="i">
+                  <ion-card-header>
+                    <a class="cart_quantity_delete" (click)="remove(item.id)"><ion-icon name="close-outline"></ion-icon></a>
+                    <ion-card-title>{{item.name}}</ion-card-title>
+                    <input type="hidden" name="item_number_{{i + 1}}" value="{{item.id}}" />
+                        <input type="hidden" name="amount_{{i + 1}}" value="{{item.quantity * item.gram}}" />
+                  <a [routerLink]="['/product-detail', { id:item.id,catid:item.categoryId }]"><img src="{{item.photo}}" style="width:110px;" alt=""></a>
+                  <p class="information_cart "><span class="left">Ayar: {{item.ayar}} K</span><span class="right">Gram: {{item.gram}} Gr</span></p>
+
+                  </ion-card-header>
+                
+                  <ion-card-content>
+                    <div class="quantity_cart">
+                        <a  *ngIf="item.quantity>1" class="cart_quantity_delete" (click)="updateQualiteMinus(item.id)" ><ion-icon name="remove-circle-outline"></ion-icon></a>
+                        <ion-icon *ngIf="item.quantity===1" name="remove-circle-outline" class="cart_quantity_delete"></ion-icon>
+                      <p>{{item.quantity}}</p>
+                      <a class="cart_quantity_delete" (click)="updateQualitePlus(item.id)"><ion-icon name="add-circle-outline"></ion-icon></a>
+                    </div>
+                    <p class="information_cart"><span class="left">Toplam Gram:{{item.quantity * item.gram}} Gr</span><span class="right">Toplam Has: {{(item.quantity * item.gram * item.ayar_key) / 1000}} Gr</span></p>
+                  </ion-card-content>
+                </ion-card>
+                
+              <input type="hidden" name="cmd" value="_cart" />
+                        <input type="hidden" name="business" value="{{businessEmail}}" />
+                        <input type="hidden" name="upload" value="1"/>
+                        <input type="hidden" name="return" value="{{returnUrl}}" />
+                        <div class="cart_button_submit"> 
+                          <input *ngIf="userInfo.username.length != 0" type="button" class="btn btn-default add-to-cart" value="Devam et" style="margin-top:10px;" (click)="save($event)"/>
+                          <a *ngIf="userInfo.username.length == 0" [routerLink]="['/login']" class="btn btn-default add-to-cart"><ion-icon name="cart-outline"></ion-icon>Lütfen Ödeme için Giriş Yapın
+                          </a>
+                        </div>
+                  
+              </form>
+              <div *ngIf="s<1">
+                <div class="about-header noo_cart">
+                  <!-- Instead of loading an image each time the select changes, use opacity to transition them -->
+                  <div class="about-image madison" [ngStyle]="location === 'madison' && {'opacity': '1'}"></div>
+                  <div class="about-image austin" [ngStyle]="location === 'austin' && {'opacity': '1'}"></div>
+                  <div class="about-image chicago" [ngStyle]="location === 'chicago' && {'opacity': '1'}"></div>
+                  <div class="about-image seattle" [ngStyle]="location === 'seattle' && {'opacity': '1'}"></div>
+                </div>
+                <div class="cart_button_submit" > 
+                  <a  [routerLink]="['/home']" class="btn btn-default add-to-cart"><ion-icon name="cart-outline"></ion-icon>yeni bir sipariş vermek için geri dön
+                  </a>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+  </ion-content>
+</ion-content>

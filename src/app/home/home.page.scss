@@ -1,0 +1,63 @@
+.slider_home {
+  --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+}
+ion-slides.slider_home {
+  height: 100%;
+}
+.swiper-pagination-bullet-active {
+  background: #fff;
+}
+.header-collapse-condense ion-toolbar:first-of-type {
+  padding-top: 0;
+  z-index: 1;
+}
+ ion-card-title.about_home {
+  font-family: Sterling Display A;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25;
+    padding-bottom: 0;
+    word-break: break-word;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-style: oblique;
+    font-size: 1.5rem;
+}
+
+ion-card.about_home {
+  text-align: justify;
+  position: relative;
+  top: -50px;
+  z-index: 999;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+.about_home .description{
+  margin-bottom: 10px;
+}
+.backBtn{
+  position: absolute;
+  left: 20vw;
+  top: 40vh;
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  border: none;
+  background: red;
+}
+
+.nextBtn{
+  position: absolute;
+  right: 20vw;
+  top: 40vh;
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  border: none;
+  background: green;
+}

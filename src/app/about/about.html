@@ -1,0 +1,101 @@
+<ion-content>
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        <!-- <ion-icon name="mail" (click)="backToCat()"></ion-icon> -->
+      </ion-buttons>
+      <ion-img [src]="logoApps" class="logo_menu"></ion-img>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="about-header">
+    <!-- Instead of loading an image each time the select changes, use opacity to transition them -->
+    <div class="about-image madison" [ngStyle]="location === 'madison' && {'opacity': '1'}"></div>
+    <div class="about-image austin" [ngStyle]="location === 'austin' && {'opacity': '1'}"></div>
+    <div class="about-image chicago" [ngStyle]="location === 'chicago' && {'opacity': '1'}"></div>
+    <div class="about-image seattle" [ngStyle]="location === 'seattle' && {'opacity': '1'}"></div>
+  </div>
+
+  <div class="about-info">
+    <ion-card-header>
+      <ion-card-title class="about_home">{{aboutTitle}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div class="description" innerHTML="{{aboutInfo}}"></div>
+    </ion-card-content>
+    <div class="row info-contact">
+      <div class="col-12 item-contact">
+        <div class="title-image">
+          <ion-icon name="mail"></ion-icon>
+        </div>
+        <div class="info">
+          <h3 class="title">MAİL WEB SİTE</h3>
+          <p>
+            <ion-icon name="mail"></ion-icon> {{companyMail}}
+          </p>
+        </div>
+      </div>
+      <div class="col-12 item-contact">
+        <div class="title-image">
+          <ion-icon name="call"></ion-icon>
+        </div>
+        <div class="info">
+          <h3 class="title">İLETİŞİM</h3>
+          <p ng-if="companyPhone">
+            <ion-icon name="call"></ion-icon>   <a href="tel:{{companyPhone}}">{{companyPhone}}</a>
+          </p>
+          <p ng-if="companyFix">
+            <ion-icon name="call"></ion-icon>
+            <a href="tel:{{companyPhone}}">{{companyFix}}</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-12 item-contact">
+        <div class="title-image">
+          <ion-icon name="map"></ion-icon>
+        </div>
+        <div class="info">
+          <h3 class="title">ADRES</h3>
+          <p>
+            <i class="fa fa-map-marker" aria-hidden="true"></i> {{companyAdress}}
+                  
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="form-contact">
+      <form [formGroup]="signUpForm" (ngSubmit)="save()" class="row">
+        <div  class="col-md-6">
+          <label for="">Full Name</label>
+          <input formControlName="name" placeholder="Full Name" type="text" required="required">
+
+        </div>
+        <div  class="col-md-6">
+          <label for="">Company Name</label>
+          <input formControlName="company" placeholder="Company Name" type="text" required="required" class="col-md-6">
+        </div>
+        <div class="col-md-6">
+          <label for="">Email</label>
+          <input formControlName="email" placeholder="Email" type="" required="required" class="col-md-6">
+
+        </div>
+        <div class="col-md-6">
+          <label for="">Phone</label>
+          <input formControlName="phone" placeholder="Phone" type="text" required="required" class="col-md-6">
+
+        </div>
+        <div class="col-md-12">
+          <label for="">Messages</label>
+          <textarea formControlName="message" placeholder="Messages" required="required" cols="30" rows="10"></textarea>
+
+        </div>
+        <div class="col-md-12 submit_form">
+          <button type="submit">Send</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,100 @@
+<ion-header [translucent]="true" class="header_top">
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-img [src]="logoApps" class="logo_menu"></ion-img>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar class="slider_home">
+      <ion-slides pager="true" [options]="slideOpts" >
+        <ion-slide *ngFor="let banner of banners;">
+          <ion-img src="{{linkPhoto}}{{path_banner1}}" ></ion-img>
+        </ion-slide>
+        <ion-slide>
+          <ion-img src="{{linkPhoto}}{{path_banner2}}" ></ion-img>
+        </ion-slide>
+        <ion-slide>
+          <ion-img src="{{linkPhoto}}{{path_banner3}}" ></ion-img>
+        </ion-slide>
+      </ion-slides>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card class="about_home">
+    <ion-card-header>
+      <ion-card-title class="about_home">{{aboutTitle}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div class="description" innerHTML="{{aboutInfo}}"></div>
+      <ion-button color="primary" class="button_global">daha fazla oku</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <div class="new_product">
+    <h2 class="title_item">YENI KOLEKSIYONU KEŞFEDIN</h2>
+    <div class="feature_divider"></div>
+  </div>
+  <ion-toolbar class="slider_new_product">
+    <ion-slides pager="true" [options]="slideOpts" >
+      <ion-slide class="product_info" *ngFor="let product of products;" >
+        <ion-img src="{{product.photo}}" ></ion-img>
+        <p>{{product.title}}</p>
+        <h2 class="info_gram">{{product.gram}} Gr ~ {{product.ayar}} k</h2>
+        <ion-button color="primary" class="button_global">Sepete Ekle</ion-button>
+      </ion-slide>
+    </ion-slides>
+  </ion-toolbar>
+  <ion-toolbar class="categories_items" >
+    
+      <div class="categories_item" *ngFor="let collection of collections" >
+        <div *ngIf="collection.parentId > 0">
+          <ion-img src="{{collection.photo}}" ></ion-img>
+          <div class="info_item">
+            <h2>{{collection.name}}</h2>
+            <div class="description" innerHTML="{{collection.description}}"></div>
+            <ion-button color="primary" class="button_global">daha fazla oku</ion-button>
+          </div>
+        </div>
+      </div>
+  </ion-toolbar>
+  <div class="clear"></div>
+  <div class="new_product">
+    <h2 class="title_item">BIZIM ATÖLYE</h2>
+    <div class="feature_divider"></div>
+  </div>
+  <ion-toolbar class="slider_new_product atelier">
+    <ion-slides pager="true" [options]="slideOpts1" >
+      <ion-slide class="product_info" *ngFor="let brand of brands">
+        <ion-img src="{{linkPhoto}}{{brand.photo}}" ></ion-img>
+        <div class="item_info">
+          <div innerHTML="{{brand.description}}"></div>
+            <ion-button color="primary" class="button_global">görmek Atelier2</ion-button>
+				</div>
+      </ion-slide>
+    </ion-slides>
+  </ion-toolbar>
+  <div class="comment_items">
+    <ion-icon name="thumbs-up-outline" class="comment_icon"></ion-icon>
+    <ion-toolbar class="slider_new_product ">
+      <ion-slides pager="true" [options]="slideOpts1" >
+        <ion-slide class="comments" *ngFor="let comment of comments;">
+          <ion-img src="{{comment.photo}}" ></ion-img>
+          <div class="item_info">
+              <h2>{{comment.title}}</h2>
+              <div>
+                <p>
+                  {{comment.content}}
+                </p>
+              </div>
+              <h6>{{comment.fullName}}</h6>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </ion-toolbar>
+  </div>
+  
+</ion-content>

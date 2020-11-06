@@ -1,0 +1,77 @@
+<ion-content>
+  <ion-header [translucent]="true" class="header_top">
+    <ion-toolbar class="new-background-color">
+      <ion-buttons slot="start">
+        <ion-icon name="return-down-back-outline" (click)="backToCat()" class="icon-back"></ion-icon>
+      </ion-buttons>
+      <ion-img [src]="logoApps" class="logo_menu"></ion-img>
+      
+    </ion-toolbar>
+  </ion-header>
+<!-- 
+  <div class="about-header">
+    <div class="about-image madison" [ngStyle]="location === 'madison' && {'opacity': '1'}"></div>
+    <div class="about-image austin" [ngStyle]="location === 'austin' && {'opacity': '1'}"></div>
+    <div class="about-image chicago" [ngStyle]="location === 'chicago' && {'opacity': '1'}"></div>
+    <div class="about-image seattle" [ngStyle]="location === 'seattle' && {'opacity': '1'}"></div>
+  </div> -->
+
+  <ion-content class="categorie_product">
+    <div class="product-details container" >
+      <div class="view-product">
+        <img src="{{product?.photo}}" alt="">
+        <h2>{{product?.title}}</h2>
+        <h2 class="grame">{{product?.gram}} Gr ~ {{product?.ayar}} k</h2>
+      </div>
+      <div class="product-information" (click)="addCart(product?.id)"><!--/product-information-->
+								
+        
+        
+          
+                            
+          <ion-button color="primary" class="button_global" >Sepete Ekle</ion-button>
+       
+      </div>
+    </div>
+    <div class="description product" innerHTML="{{product?.detail}}"></div>
+    <div class="col-sm-12 comment_product ">
+      <div class="login-form">
+        <form [formGroup]="signUpForm1" (ngSubmit)="save1($event)" >
+
+          <input formControlName="fullName" placeholder="Full Name" type="text" required="required">
+
+          <input formControlName="articleId" placeholder="Company Name" value="{{product?.id}}" type="hidden">
+
+          <textarea formControlName="content" placeholder="Comment" required="required" cols="30" rows="10"></textarea>
+
+          <button type="submit">Send</button>
+
+        </form>
+      </div>
+    </div>
+    <!-- <div class="features_items other_product container">
+      <h2 class="title text-center">ÖNERİLEN ÜRÜNLER</h2>
+      <div class="feature_divider"></div>
+        <div class="col-sm-3" *ngFor="let product of products">
+          <div class="product-image-wrapper">
+            <div class="single-products">
+                <div class="productinfo text-center">
+                  <a [routerLink]="['/product-detail', { id:product.id,catid:product.categoryId }]">
+                    <img src="{{product.photo}}" alt="">
+                  </a>
+                  <div class="info_res" [routerLink]="['/product-detail', { id:product.id,catid:product.categoryId }]">
+                    <div class="vCentre">
+                      <h2>{{product.gram}} Gr ~ {{product.ayar}} k</h2>
+                      <ion-button color="primary" class="button_global">Sepete Ekle</ion-button>
+                    </div>
+                  </div>
+                  <p>{{product.title}}</p>
+                </div>
+                
+            </div>
+            
+          </div>
+        </div>
+    </div> -->
+  </ion-content>
+</ion-content>
