@@ -40,7 +40,7 @@
   </div>
   <ion-toolbar class="slider_new_product">
     <ion-slides pager="true" [options]="slideOpts" >
-      <ion-slide class="product_info" *ngFor="let product of products;" >
+      <ion-slide class="product_info" *ngFor="let product of products;" (click)="openNavDetailsPage(product)">
         <ion-img src="{{product.photo}}" ></ion-img>
         <p>{{product.title}}</p>
         <h2 class="info_gram">{{product.gram}} Gr ~ {{product.ayar}} k</h2>
@@ -50,7 +50,7 @@
   </ion-toolbar>
   <ion-toolbar class="categories_items" >
     
-      <div class="categories_item" *ngFor="let collection of collections" >
+      <div class="categories_item" *ngFor="let collection of collections" [routerLink]="['/collection/'+collection.id]" >
         <div *ngIf="collection.parentId > 0">
           <ion-img src="{{collection.photo}}" ></ion-img>
           <div class="info_item">

@@ -28,6 +28,9 @@ export class ProductService {
 		return this.http.get(this.restService.baseURLKey('article', 'search_by_category_id/' + categoryId)).map((res:Response) => res.json());		
 	}
 	
+	findBycollections(collectionId: number) {	
+		return this.http.get(this.restService.baseURLKey('article', 'search_by_collection_id/' + collectionId)).map((res:Response) => res.json());		
+	}
 	findByBrand(brandId: number) {	
 		return this.http.get(this.restService.baseURLKey('article', 'search_by_brand_id/' + brandId)).map((res:Response) => res.json());		
 	}

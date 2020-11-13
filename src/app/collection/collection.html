@@ -1,0 +1,37 @@
+<ion-content>
+  <ion-header [translucent]="true" class="header_top">
+    <ion-toolbar class="new-background-color">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-img [src]="logoApps" class="logo_menu"></ion-img>
+      
+    </ion-toolbar>
+  </ion-header>
+<!-- 
+  <div class="about-header">
+    <div class="about-image madison" [ngStyle]="location === 'madison' && {'opacity': '1'}"></div>
+    <div class="about-image austin" [ngStyle]="location === 'austin' && {'opacity': '1'}"></div>
+    <div class="about-image chicago" [ngStyle]="location === 'chicago' && {'opacity': '1'}"></div>
+    <div class="about-image seattle" [ngStyle]="location === 'seattle' && {'opacity': '1'}"></div>
+  </div> -->
+
+  <ion-content class="categorie_product">
+    
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+        <ion-toolbar class="slider_new_product">
+            <div class="product_info" *ngFor="let product of products;" (click)="openNavDetailsPage(product)" >
+              <ion-img src="{{product.photo}}" ></ion-img>
+              <p>{{product.title}}</p>
+              <h2 class="info_gram">{{product.gram}} Gr ~ {{product.ayar}} k</h2>
+              <ion-button color="primary" class="button_global">Sepete Ekle</ion-button>
+            </div>
+            
+        </ion-toolbar>
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-content>

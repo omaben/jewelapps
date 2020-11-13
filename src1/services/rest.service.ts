@@ -2,7 +2,7 @@
 import { map } from 'rxjs/operators';
 @Injectable()
 export class RestService {
-	private BASE_URL: string = "http://demo.jewelapps.com/api/";
+	private BASE_URL: string = "https://demo.jewelapps.com/api/";
 	private keyName: string = "X_API_KEY";
 	private keyValue: string = "034849cb33d276eb61ac6b9871c7a140f08f386b";
 

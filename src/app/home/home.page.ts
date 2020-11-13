@@ -10,12 +10,19 @@ import { CommentService } from '../../services/comment.service';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { ModalController, AlertController } from '@ionic/angular'
+import { ProductdetailPage } from '../productdetail/productdetail';
+import { FormBuilder, Validators, FormGroup  } from '@angular/forms';
+import { ContactService } from '../../services/contact.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  signUpForm: FormGroup; 
+  result: any;
   public home: string;
   public linkPhoto: string;
   public aboutInfo: string;
@@ -47,8 +54,15 @@ export class HomePage implements OnInit {
     autoplay:1000,
     loop:true
   };
-  constructor(private splashScreen: SplashScreen,private statusBar: StatusBar,private platform: Platform, private activatedRoute: ActivatedRoute, private productService: ProductService, private collectionService: CollectionService, private brandService: BrandService, private settingService: SettingService, private commentService: CommentService) { 
+  constructor(private splashScreen: SplashScreen,private formBuilder: FormBuilder, private contactService: ContactService, private navCtrl: ModalController,private statusBar: StatusBar,private platform: Platform, private activatedRoute: ActivatedRoute, private productService: ProductService, private collectionService: CollectionService, private brandService: BrandService, private settingService: SettingService, private commentService: CommentService) { 
     this.initializeApp();
+    this.signUpForm = this.formBuilder.group({
+      name: ['', [Validators.required]], 
+      phone: ['', [Validators.required]],
+      company: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      message: ['', [Validators.required]]
+  });
   }
   initializeApp() {
     this.platform.ready().then(() => {
@@ -81,5 +95,24 @@ export class HomePage implements OnInit {
   async openSocial(network: string) {
     window.open(network)
   } 
-
+  save() {
+    this.contactService.create(this.signUpForm.value).subscribe(data => {
+        var resultR = JSON.parse(data);
+        if(resultR.count == 0) {
+          window.location.reload()
+        } else {
+            this.result = resultR
+        }
+    });
+}
+  openNavDetailsPage(item) {
+    this.navCtrl.create({
+      component: ProductdetailPage,
+      componentProps: { 
+        productId:item.id
+      }
+  }).then((modal) => {
+      modal.present();
+  });
+  }
 }

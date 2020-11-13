@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 import { CollectionService } from '../../services/collection.service';
 import { BrandService } from '../../services/brand.service';
 import { SettingService } from '../../services/setting.service';
 import { CommentService } from '../../services/comment.service';
 import { IonicModule } from '@ionic/angular';
+import { ContactService } from '../../services/contact.service';
 
 import { HomePageRoutingModule } from './home-routing.module';
 
@@ -18,12 +20,14 @@ import { HttpModule } from '@angular/http';
     HttpModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
   ProductService,
   CollectionService,
   BrandService,
+  ContactService,
   SettingService,
   CommentService
   ],
