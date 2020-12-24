@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 
-    return c > 3 && r && https://demo.jewelapps.com/api/key, r), r;
+    return c > 3 && r && https://admin.primogold.com.tr/api/key, r), r;
 
 };
 
@@ -18,7 +18,7 @@ var RestService = (function () {
 
     function RestService() {
 
-        this.BASE_URL = "https://demo.jewelapps.com/api/";
+        this.BASE_URL = "https://admin.primogold.com.tr/api/";
 
         this.keyName = "X_API_KEY";
 

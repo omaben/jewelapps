@@ -18,7 +18,7 @@ var RestService = (function () {
 
     function RestService() {
 
-        this.BASE_URL = "https://demo.jewelapps.com/api/";
+        this.BASE_URL = "https://admin.primogold.com.tr/api/";
 
         this.keyName = "X_API_KEY";
 

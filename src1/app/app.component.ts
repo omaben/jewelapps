@@ -11,7 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
-  public logoApps = 'https://demo.jewelapps.com/assets/upload/logoL.png';
+  public logoApps = 'https://admin.primogold.com.tr/assets/upload/logoL.png';
   public appPages = [
     {
       title: 'Inbox',
