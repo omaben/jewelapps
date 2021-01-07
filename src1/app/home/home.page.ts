@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
   collections : Collection[];
   brands : {};
   comments : {};
-  public logoApps = 'https://demo.jewelapps.com/assets/upload/logoL.png';
+  public logoApps = 'https://admin.primogold.com.tr/assets/upload/logoL.png';
   public slideOpts = {
     initialSlide: 1,
     speed: 400,
