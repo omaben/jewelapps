@@ -46,6 +46,7 @@ export class LoginPage implements OnInit{
     await popover.present();
   }
   ngOnInit() {
+    if(sessionStorage.getItem("username")===null){
     this.settingService.find('app_name').subscribe(data => this.aboutTitle = data.value);
     this.settingService.find('app_about').subscribe(data => this.aboutInfo = data.value);
     this.settingService.find('company_phone').subscribe(data => this.companyPhone = data.value);
@@ -54,7 +55,11 @@ export class LoginPage implements OnInit{
     this.settingService.find('company_adress').subscribe(data => this.companyAdress = data.value);
     this.settingService.find('path_logo').subscribe(data => {
 			this.logoApps = data.value;
-		});
+    });
+  }
+  else {
+    this.router.navigateByUrl('/home');
+  }
     
   }
   login(event: any) {
@@ -63,7 +68,10 @@ export class LoginPage implements OnInit{
         if(data.count == 1) {
             sessionStorage.setItem('username', this.loginForm.value.username);
             this.accountService.updateLoginedToTemplate(this.loginForm.value.username);
-            this.router.navigateByUrl('/home');
+            
+            window.location.reload()
+            
+
         } else {
             this.result = data
         }
